@@ -1,0 +1,3697 @@
+Prompt to generate highlevel putput chapterwise...
+
+# Module: 0
+
+ROLE & AUTHORITY
+
+You are a senior causal inference researcher, philosopher of science, and applied data scientist with experience in:
+
+Econometrics
+
+Epidemiology
+
+Marketplace analytics (ride-sharing, pricing, incentives)
+
+Biomedical and CGM data analysis
+
+You are writing full study material for a Master’s-level course in Causal Inference, specifically Module 0: Causal Thinking Before Models.
+
+You must prioritize conceptual correctness, depth, and clarity over brevity.
+
+OBJECTIVE
+
+Produce complete, self-contained study content for the following module:
+
+Module 0: Causal Thinking Before Models (Grounding)
+
+The output should be sufficient for:
+
+Exam preparation
+
+Viva / oral defense
+
+Research readiness
+
+Industry interviews (Pathao-style marketplace analytics)
+
+This module must build causal intuition before any math or models.
+
+REQUIRED CONTENT (DO NOT SKIP ANY)
+
+You MUST cover all of the following sections, in this exact logical order:
+
+1️⃣ Correlation vs. Causation
+
+Explain:
+
+What correlation is
+
+What causation is
+
+Why correlation alone cannot justify action
+
+Include:
+
+At least 3 classic failure modes (e.g., confounding, reverse causality, collider bias — but explained intuitively)
+
+One real-world non-technical example
+
+One data science example where correlation misleads decisions
+
+2️⃣ Observational vs. Interventional Data
+
+Explain:
+
+What observational data is
+
+What interventional data is
+
+Why observational data reflects the world as it happened, not what would happen if we acted
+
+Include:
+
+A clear contrast table (conceptual, not mathematical)
+
+One health example
+
+One product/marketplace example
+
+3️⃣ Prediction vs. Decision-Making
+
+Explain clearly:
+
+What prediction models optimize
+
+What decisions require
+
+Why high predictive accuracy can still produce bad decisions
+
+Include:
+
+The concept of policy regret or decision error (intuitively)
+
+Why “best prediction ≠ best action”
+
+4️⃣ The Intervention Question
+
+Explain:
+
+What an intervention question is
+
+How it differs from descriptive and predictive questions
+
+Use explicit language:
+
+“What happened?”
+
+“What will happen?”
+
+“What would happen if we change X?”
+
+Include:
+
+One formal intervention question
+
+One informal, everyday-life intervention question
+
+5️⃣ The Pathao Case (Marketplace Analytics)
+
+Provide a detailed causal explanation of:
+
+Why a perfectly accurate churn prediction model might recommend “useless” or harmful discounts.
+
+Explain:
+
+Price sensitivity vs churn correlation
+
+Why targeting high-risk users may waste money
+
+How causal thinking reframes the problem
+
+You MUST explicitly contrast:
+
+Predictive targeting
+
+Causal targeting (persuadables)
+
+6️⃣ The CGM Case (Biological Systems)
+
+Explain in detail:
+
+Why observing high glucose and high insulin together does NOT imply insulin causes high glucose.
+
+Explain:
+
+Reverse causality intuitively
+
+The biological feedback loop
+
+Why naive ML explanations fail here
+
+This explanation must be accessible to a non-biologist.
+
+7️⃣ The “Association Trap”
+
+Define and explain:
+
+What the Association Trap is
+
+Why ML models fall into it by default
+
+Why explainability alone (SHAP/LIME) does not solve it
+
+Include:
+
+A short cautionary paragraph suitable for exam answers
+
+8️⃣ Mental Models to Take Forward
+
+End with:
+
+A concise list of mental rules or thinking principles students should carry into later modules (e.g., “Actions are not variables”, “Models don’t know counterfactuals”, etc.)
+
+REQUIRED STYLE & DEPTH RULES
+
+Write in clear academic English
+
+Use plain language first, then refine with technical terms
+
+No heavy math
+
+No proofs
+
+No code
+
+Use examples whenever abstraction appears
+
+Assume the reader knows statistics and ML, but not causal inference
+
+SOURCE USAGE REQUIREMENTS
+
+When relevant, draw concepts and intuition from (without plagiarizing):
+
+Causal Inference: The Mixtape (Cunningham)
+
+The Book of Why (Pearl)
+
+Causal Inference: What If (Hernán & Robins)
+
+Decision theory and intervention-based reasoning
+
+Do NOT quote excessively.
+Do NOT hallucinate references.
+If a claim is conceptual, say so.
+
+OUTPUT FORMAT
+
+Structured sections with clear headings
+
+Long-form explanatory text
+
+Exam-usable explanations
+
+No bullet-point-only summaries
+
+This output should read like a polished lecture note or mini-chapter, not a blog post.
+
+FINAL CHECK (MANDATORY)
+
+Before finishing, verify that:
+
+A student can fully understand why causality is needed before models
+
+The difference between prediction and intervention is unmistakable
+
+Both Pathao and CGM examples clearly demonstrate causal failure modes
+
+---
+
+# Module 1
+
+🔍 DEEP RESEARCH MASTER PROMPT
+
+(Module 1: The Potential Outcomes Framework – Rubin Model)
+
+ROLE & AUTHORITY
+
+You are a senior causal inference researcher and instructor with expertise in:
+
+Potential Outcomes / Rubin Causal Model
+
+Econometrics and biostatistics
+
+Applied data science and machine learning
+
+Policy evaluation and experimentation
+
+You are writing full study material for a Master’s-level course in Causal Inference, specifically:
+
+Module 1: The Potential Outcomes Framework (Rubin Model)
+
+You must prioritize clarity, mathematical correctness, and causal reasoning, not surface-level explanation.
+
+OBJECTIVE
+
+Produce complete, self-contained study content for Module 1, covering:
+
+Counterfactual reasoning
+
+Formal causal estimands
+
+The Fundamental Problem of Causal Inference
+
+Identification logic
+
+Core causal assumptions
+
+The output must be sufficient for:
+
+Written exams
+
+Viva / oral exams
+
+Transition into DAGs, experiments, and causal ML
+
+REQUIRED CONTENT (DO NOT OMIT ANY SECTION)
+
+You MUST cover all of the following, in this exact conceptual order:
+
+1️⃣ Counterfactuals and Potential Outcomes
+
+Explain clearly:
+
+What a counterfactual is
+
+Why each unit has two potential outcomes: 
+𝑌
+𝑖
+(
+1
+)
+Y
+i
+	​
+
+(1) and 
+𝑌
+𝑖
+(
+0
+)
+Y
+i
+	​
+
+(0)
+
+Why only one potential outcome is observed
+
+Include:
+
+A non-technical everyday example
+
+A data science example (e.g., discount vs no discount)
+
+Explicit notation explanation (what the subscript 
+𝑖
+i means)
+
+2️⃣ The Fundamental Problem of Causal Inference
+
+Explain:
+
+Why individual causal effects cannot be observed
+
+Why causal inference is inherently a missing-data problem
+
+Include:
+
+One paragraph suitable for direct exam answers
+
+Clarify why this problem is not solvable by more data or better ML
+
+3️⃣ Causal Effects and Estimands
+
+Formally define:
+
+Individual Treatment Effect (ITE)
+
+Average Treatment Effect (ATE)
+
+Average Treatment Effect on the Treated (ATT)
+
+Average Treatment Effect on the Control (ATC)
+
+Explain:
+
+Why we focus on averages
+
+Why estimands are targets, not estimators
+
+Use plain language first, then math.
+
+4️⃣ Average Treatment Effect (ATE)
+
+Explain:
+
+𝐴
+𝑇
+𝐸
+=
+𝐸
+[
+𝑌
+(
+1
+)
+−
+𝑌
+(
+0
+)
+]
+ATE=E[Y(1)−Y(0)]
+
+Cover:
+
+What the expectation is taken over
+
+Why ATE is a population-level quantity
+
+When ATE is a meaningful summary and when it is not
+
+Include:
+
+One policy example
+
+One marketplace example
+
+5️⃣ Selection Bias and the Naïve Comparison
+
+Explain in detail:
+
+𝐸
+[
+𝑌
+∣
+𝑇
+=
+1
+]
+−
+𝐸
+[
+𝑌
+∣
+𝑇
+=
+0
+]
+E[Y∣T=1]−E[Y∣T=0]
+
+Clarify:
+
+Why this is not a causal effect
+
+What it actually measures
+
+Then derive and explain:
+
+𝐸
+[
+𝑌
+∣
+𝑇
+=
+1
+]
+−
+𝐸
+[
+𝑌
+∣
+𝑇
+=
+0
+]
+=
+𝐴
+𝑇
+𝐸
++
+{
+𝐸
+[
+𝑌
+(
+0
+)
+∣
+𝑇
+=
+1
+]
+−
+𝐸
+[
+𝑌
+(
+0
+)
+∣
+𝑇
+=
+0
+]
+}
+E[Y∣T=1]−E[Y∣T=0]=ATE+{E[Y(0)∣T=1]−E[Y(0)∣T=0]}
+
+Explain each term in words, not symbols.
+
+6️⃣ Interpretation of the Selection Bias Term
+
+Explain:
+
+What 
+𝐸
+[
+𝑌
+(
+0
+)
+∣
+𝑇
+=
+1
+]
+E[Y(0)∣T=1] means conceptually
+
+Why this term is unobservable
+
+How self-selection enters causal problems
+
+Include:
+
+One health example
+
+One marketplace example
+
+7️⃣ Core Identification Assumptions
+
+Explain separately and clearly:
+
+(a) SUTVA
+
+What it means
+
+Two components (no interference, consistency)
+
+Realistic violations (spillovers, network effects)
+
+(b) Ignorability / Unconfoundedness
+
+What it assumes
+
+Why it is strong
+
+Why it is fundamentally untestable
+
+(c) Positivity / Overlap
+
+What overlap means
+
+Deterministic treatment assignment
+
+Why lack of overlap breaks causal inference
+
+Use intuitive language first, formal phrasing second.
+
+8️⃣ Observational vs Randomized Assignment (Rubin Lens)
+
+Explain:
+
+Why randomization solves the selection bias term
+
+Why observational studies must rely on assumptions
+
+Include:
+
+A short comparison table (conceptual, not numerical)
+
+9️⃣ From Theory to Practice (Data Science View)
+
+Explain:
+
+Why causal estimands cannot be “learned” directly by ML
+
+Why treatment must be treated differently from features
+
+Why causal inference precedes causal ML
+
+This section should explicitly bridge to later modules.
+
+🔟 Counterfactual Simulation in Practice (Conceptual)
+
+Explain at a high level:
+
+What it means to simulate counterfactual outcomes
+
+Why we simulate distributions, not individual truths
+
+Mention:
+
+How libraries like CausalML frame counterfactual value estimation
+
+Why simulation ≠ ground truth
+
+NO code required.
+
+REQUIRED STYLE & DEPTH RULES
+
+Academic but readable English
+
+Equations must be interpreted in words
+
+No proofs
+
+No heavy measure-theoretic language
+
+Examples wherever abstraction appears
+
+Assume prior knowledge of probability and ML
+
+SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base intuition and structure on:
+
+Causal Inference: What If (Hernán & Robins)
+
+Causal Inference: The Mixtape (Cunningham)
+
+Rubin causal model lecture notes
+
+Do NOT fabricate citations.
+If something is conceptual, state that clearly.
+
+OUTPUT FORMAT
+
+Sectioned lecture-note style
+
+Clear headings
+
+Long-form explanations
+
+Exam-ready language
+
+No bullet-only answers
+
+FINAL CHECK (MANDATORY)
+
+Before completing, ensure that:
+
+The reader clearly understands why causal effects are unobservable
+
+The naïve difference in means is fully dismantled
+
+Each assumption is clearly linked to identification
+
+The transition to later modules (DAGs, experiments) is natural
+
+---
+
+# Module 2
+
+🔍 DEEP RESEARCH MASTER PROMPT
+
+(Module 2: Structural Causal Models & DAGs – Pearlian School)
+
+ROLE & AUTHORITY
+
+You are a senior causal inference researcher and instructor, trained in:
+
+Structural Causal Models (SCMs)
+
+Directed Acyclic Graphs (DAGs)
+
+Pearlian intervention logic
+
+Applied causal inference in data science, epidemiology, and machine learning
+
+You are writing full study material for a Master’s-level course in Causal Inference, specifically:
+
+Module 2: Structural Causal Models & DAGs (Pearlian School)
+
+Your responsibility is to make graphical causality intuitive, precise, and operational.
+
+OBJECTIVE
+
+Produce complete, self-contained study content for Module 2, explaining:
+
+How causal assumptions are encoded as graphs
+
+How interventions differ from observations
+
+How causal effects are identified using DAG logic
+
+Why naïve “control-for-everything” thinking fails
+
+This content must prepare students for:
+
+Identification (backdoor/frontdoor)
+
+DoWhy-style causal pipelines
+
+Avoiding collider bias in ML explanations
+
+Transition to experiments and causal ML
+
+REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover all sections below, in the given order.
+
+1️⃣ Why We Need Graphs in Causal Inference
+
+Explain:
+
+Why potential outcomes alone are not enough
+
+Why assumptions must be made explicit
+
+Why graphs are not “models of data”, but “models of data-generating processes”
+
+Include:
+
+One example where the same regression gives different causal meanings under different DAGs
+
+2️⃣ Structural Causal Models (SCMs)
+
+Explain clearly:
+
+What an SCM is (structural equations + noise terms)
+
+Difference between structural equations and statistical regressions
+
+How SCMs encode causal direction
+
+Use:
+
+Simple symbolic examples (no proofs)
+
+Plain-language interpretation of equations
+
+3️⃣ Directed Acyclic Graphs (DAGs): Basic Anatomy
+
+Explain:
+
+Nodes, edges, and direction
+
+Why cycles are not allowed (and how time indexing resolves feedback)
+
+What it means for a graph to represent causal assumptions
+
+4️⃣ Confounders, Mediators, and Colliders
+
+Explain separately and clearly:
+
+(a) Confounders
+
+Common causes
+
+Why they create spurious associations
+
+Why adjustment is required
+
+(b) Mediators
+
+Variables on the causal pathway
+
+Why adjusting for mediators can block causal effects
+
+(c) Colliders (The “Data Scientist’s Nightmare”)
+
+Common effects
+
+Why conditioning creates false associations
+
+Why ML pipelines accidentally condition on colliders
+
+Include:
+
+At least one everyday-life example
+
+One data science example
+
+5️⃣ The CGM Collider Example (Core Application)
+
+Explain in detail:
+
+𝐷
+𝑖
+𝑒
+𝑡
+→
+𝐺
+𝑙
+𝑢
+𝑐
+𝑜
+𝑠
+𝑒
+←
+𝐼
+𝑛
+𝑠
+𝑢
+𝑙
+𝑖
+𝑛
+Diet→Glucose←Insulin
+
+Explain:
+
+Why glucose is a collider
+
+Why conditioning on glucose induces a false relationship between diet and insulin
+
+Why naive ML explanations fail in biological feedback systems
+
+This explanation must be:
+
+Non-biological in language
+
+Conceptual, not clinical
+
+6️⃣ The Logic of Intervention (do-Operator Intuition)
+
+Explain:
+
+Difference between 
+𝑃
+(
+𝑦
+∣
+𝑥
+)
+P(y∣x) and 
+𝑃
+(
+𝑦
+∣
+𝑑
+𝑜
+(
+𝑥
+)
+)
+P(y∣do(x))
+
+What “cutting incoming arrows” means
+
+Why interventions change the data-generating process
+
+NO formal do-calculus derivations.
+Focus on logic, not algebra.
+
+7️⃣ The Backdoor Criterion
+
+Explain step-by-step:
+
+𝑃
+(
+𝑦
+∣
+𝑑
+𝑜
+(
+𝑥
+)
+)
+=
+∑
+𝑧
+𝑃
+(
+𝑦
+∣
+𝑥
+,
+𝑧
+)
+𝑃
+(
+𝑧
+)
+P(y∣do(x))=
+z
+∑
+	​
+
+P(y∣x,z)P(z)
+
+Clarify:
+
+What the adjustment set 
+𝑍
+Z represents
+
+Why not all variables are valid controls
+
+Why conditioning on colliders violates backdoor logic
+
+Include:
+
+One policy example
+
+One marketplace example
+
+8️⃣ Identification vs Estimation
+
+Explain:
+
+What identification means
+
+Why identification happens before estimation
+
+Why ML cannot fix identification failure
+
+This section must explicitly connect to:
+
+Why causal pipelines separate “identify” and “estimate”
+
+9️⃣ From DAGs to Practice (Tooling Mindset)
+
+Explain conceptually:
+
+How DAGs are used in practice
+
+Why tools like DAGitty and DoWhy exist
+
+What it means to “identify” an effect algorithmically
+
+NO step-by-step code.
+Focus on reasoning flow.
+
+🔟 Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+“Control for everything” fallacy
+
+Collider bias through feature selection
+
+Reverse causality masked as confounding
+
+Include:
+
+A short paragraph suitable for direct exam answers
+
+REQUIRED STYLE & DEPTH RULES
+
+Clear academic English
+
+Graph-first intuition, math second
+
+No proofs
+
+No heavy algebra
+
+Diagrams may be described verbally
+
+Assume the reader knows Module 1 already
+
+SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+Causal Inference in Statistics: A Primer (Pearl et al.)
+
+Causality: Models, Reasoning, and Inference (Pearl)
+
+Causal Inference: The Mixtape (DAG chapter)
+
+DoWhy and DAGitty conceptual documentation
+
+Do NOT fabricate references.
+If something is conceptual or assumption-based, state it explicitly.
+
+OUTPUT FORMAT
+
+Structured lecture-note format
+
+Clear section headings
+
+Long-form explanations
+
+Exam- and viva-ready language
+
+No bullet-only summaries
+
+FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+The reader clearly understands why graphs matter
+
+Colliders are unmistakably explained
+
+Backdoor logic is intuitive, not memorized
+
+The transition to experiments and causal ML is natural
+
+---
+
+# Module 3
+
+🔍 DEEP RESEARCH MASTER PROMPT
+
+(Module 3: Advanced Experimental Design – Interference, Marketplaces, Switchbacks)
+
+ROLE & AUTHORITY
+
+You are a senior causal inference researcher and experimentation scientist with experience in:
+
+Platform and marketplace experimentation (ride-sharing, e-commerce, pricing)
+
+Interference and spillover effects
+
+Switchback and cluster-randomized experiments
+
+Econometrics and applied statistics
+
+Production A/B testing under real-world constraints
+
+You are writing full study material for a Master’s-level course in Causal Inference, specifically:
+
+Module 3: Advanced Experimental Design
+
+You must think like both:
+
+an academic causal inference expert, and
+
+an industry experimentation lead.
+
+OBJECTIVE
+
+Produce complete, self-contained study content for Module 3, explaining:
+
+Why standard A/B testing assumptions fail in marketplaces
+
+How interference and equilibrium effects arise
+
+How switchback experiments are designed and analyzed
+
+How inference and power analysis change under clustering and non-i.i.d. data
+
+The output must prepare students for:
+
+Marketplace experimentation (Pathao-style)
+
+Advanced exams and viva questions
+
+Reading modern platform experimentation papers
+
+Designing defensible experiments in the presence of interference
+
+REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover all sections below, in this exact order.
+
+1️⃣ Why Classical A/B Testing Breaks in Marketplaces
+
+Explain clearly:
+
+The assumptions behind standard A/B testing
+
+Why independence between units fails in marketplaces
+
+Introduce:
+
+Supply–demand coupling
+
+Network effects
+
+Capacity constraints
+
+Use:
+
+One simple non-technical example
+
+One platform example (ride-sharing, delivery, or pricing)
+
+2️⃣ SUTVA Revisited: Interference and Spillovers
+
+Explain:
+
+SUTVA and its two components
+
+What interference means formally and intuitively
+
+Spillover effects vs direct effects
+
+Clarify:
+
+Why SUTVA violations do not invalidate causal inference
+
+Why they require different designs
+
+Include:
+
+One exam-ready paragraph defining interference
+
+3️⃣ Marketplace Equilibrium Effects (Pathao Focus)
+
+Explain in depth:
+
+What marketplace equilibrium means
+
+How treating one user affects others
+
+Why incentives can “move” supply rather than create value
+
+Use the Pathao case explicitly:
+
+Giving a ride or discount to User A
+
+Reduced bike availability for User B
+
+Why naive metrics overstate treatment effects
+
+4️⃣ Design Responses to Interference
+
+Explain the main strategies:
+
+Cluster randomization
+
+Geographic randomization
+
+Time-based randomization
+
+Explain:
+
+Trade-offs between bias, variance, and operational feasibility
+
+Why perfect isolation is usually impossible
+
+5️⃣ Switchback Experiments (Core Technique)
+
+Explain:
+
+What a switchback experiment is
+
+Why randomization happens over time × geography
+
+When switchbacks are preferred over user-level randomization
+
+Include:
+
+A conceptual timeline example
+
+One Pathao-style deployment example
+
+NO code required.
+
+6️⃣ Identification vs Estimation Under Switchbacks
+
+Explain:
+
+What causal effect is identified in a switchback experiment
+
+Why treatment effects are averaged over blocks
+
+What assumptions replace SUTVA
+
+Clarify:
+
+What is randomized
+
+What is not randomized
+
+7️⃣ Variance and Inference with Clustered Data
+
+Explain:
+
+Why standard standard errors fail under clustering
+
+What cluster-robust variance estimation does
+
+Introduce:
+
+Intuition behind clustered standard errors
+
+Why the number of clusters matters more than sample size
+
+Include:
+
+One short mathematical intuition (no derivation)
+
+8️⃣ Power Analysis for Non-i.i.d. Experiments
+
+Explain:
+
+Why classical power calculations are misleading
+
+How clustering inflates variance
+
+The role of intracluster correlation (ICC)
+
+Explain conceptually:
+
+What can and cannot be solved analytically
+
+Why simulation is often required
+
+9️⃣ From Theory to Practice (Statsmodels View)
+
+Explain at a conceptual level:
+
+How cluster-robust inference is implemented in practice
+
+What “groups” mean in statsmodels
+
+Limitations of off-the-shelf power tools
+
+NO step-by-step code.
+Focus on reasoning and workflow.
+
+🔟 Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+Treating marketplace data as i.i.d.
+
+Ignoring equilibrium effects
+
+Over-interpreting short-term lift
+
+Using user-level SEs with cluster-level randomization
+
+Include:
+
+A short paragraph suitable for direct exam answers
+
+REQUIRED STYLE & DEPTH RULES
+
+Clear academic English
+
+Intuition first, math second
+
+No heavy proofs
+
+No production code
+
+Diagrams may be described verbally
+
+Assume the reader knows Modules 0–2
+
+SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+Marketplace experimentation literature
+
+Switchback experiment papers
+
+Interference and spillover causal inference notes
+
+Cluster-robust inference references
+
+Do NOT fabricate citations.
+If something is an assumption or approximation, state it explicitly.
+
+OUTPUT FORMAT
+
+Structured lecture-note style
+
+Clear section headings
+
+Long-form explanations
+
+Exam- and viva-ready language
+
+No bullet-only summaries
+
+FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+The reader understands why independence fails
+
+Switchback experiments are conceptually clear
+
+The role of clustering in inference is unmistakable
+
+The Pathao marketplace example clearly motivates every design choice
+
+---
+
+# Module 4
+
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 4: Quasi-Experimental “Natural” Designs – IV, RDD, DiD, Synthetic Control)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior causal inference researcher and applied econometrician** with expertise in:
+
+* Quasi-experimental research designs
+* Instrumental Variables (IV) and LATE
+* Regression Discontinuity Designs (RDD)
+* Difference-in-Differences (DiD), including staggered adoption
+* Policy evaluation and marketplace analytics
+* Practical causal implementation in Python
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 4: Quasi-Experimental “Natural” Designs**
+
+Your explanations must be **methodologically precise, assumption-aware, and exam-ready**.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 4**, explaining:
+
+* How causal effects can be identified **without randomization**
+* Why quasi-experimental designs rely on **design-based logic**, not modeling tricks
+* What assumptions make each design credible or invalid
+* How these methods are applied in real-world policy and marketplace settings
+
+The output must prepare students for:
+
+* Written exams and viva questions
+* Reading modern applied causal inference papers
+* Implementing IV/RDD/DiD responsibly in practice
+* Understanding when not to trust results
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why Quasi-Experimental Designs Exist
+
+Explain:
+
+* Why randomized experiments are often infeasible
+* What “natural experiments” mean
+* Why quasi-experimental methods shift the burden to **design assumptions**
+
+Include:
+
+* One real-world policy example
+* One marketplace or platform example
+
+---
+
+### 2️⃣ Instrumental Variables (IV): Core Logic
+
+Explain:
+
+* The IV problem setting (endogeneity and self-selection)
+* What an instrument is and what it is not
+
+Define and interpret:
+
+* Relevance
+* Exclusion restriction
+* Independence
+
+Explain clearly:
+
+* Why IV identifies **Local Average Treatment Effects (LATE)**, not ATE
+
+---
+
+### 3️⃣ The Wald Estimator & Encouragement Designs
+
+Explain:
+
+* The Wald estimator intuitively (ratio of differences)
+* How encouragement designs fit the IV framework
+
+Explain in words:
+
+* Compliers, always-takers, never-takers
+* Why the estimand depends on behavior
+
+Include:
+
+* One health example
+* One marketplace example
+
+---
+
+### 4️⃣ Regression Discontinuity Design (RDD)
+
+Explain:
+
+* The cutoff-based identification logic
+* Sharp vs Fuzzy RDD
+* Why units “near the cutoff” mimic randomization
+
+Clarify:
+
+* Continuity assumptions
+* Manipulation risks
+
+Include:
+
+* A “Gold status at 50 rides” style example
+
+---
+
+### 5️⃣ RDD Diagnostics and Validity Checks
+
+Explain:
+
+* Density tests (sorting/manipulation)
+* Covariate balance
+* Placebo cutoffs
+* Bandwidth sensitivity
+
+Emphasize:
+
+* Why RDD credibility comes from diagnostics, not estimates
+
+---
+
+### 6️⃣ Difference-in-Differences (DiD): Core Idea
+
+Explain:
+
+* The DiD estimator intuitively
+* The Parallel Trends assumption
+* Why DiD compares changes, not levels
+
+Include:
+
+* One policy rollout example
+* One platform feature rollout example
+
+---
+
+### 7️⃣ DiD Pitfalls: Serial Correlation & Inference
+
+Explain:
+
+* Why standard errors are misleading in DiD
+* Serial correlation in outcomes
+* Why long panels with few groups are dangerous
+
+Explain conceptually:
+
+* Why clustering at the right level matters
+
+---
+
+### 8️⃣ Staggered Adoption & Modern DiD
+
+Explain:
+
+* Why two-way fixed effects (TWFE) can fail
+* Negative weights and contamination
+* How modern DiD methods fix aggregation
+
+Explain:
+
+* What modern estimators average
+* Why interpretation changes
+
+---
+
+### 9️⃣ Synthetic Control (Design-Based Counterfactuals)
+
+Explain:
+
+* The idea of constructing a synthetic comparison unit
+* Why this works for single treated units
+* How it differs from DiD
+
+Include:
+
+* A “single city rollout” example
+
+---
+
+### 🔟 Identification vs Estimation in Quasi-Experiments
+
+Explain:
+
+* Why design identifies the estimand
+* Why estimation is secondary
+* Why no amount of ML can rescue bad identification
+
+This section must explicitly connect to:
+
+* The idea that **causal credibility precedes computation**
+
+---
+
+### 1️⃣1️⃣ From Theory to Practice (Python View)
+
+Explain conceptually:
+
+* How IV, RDD, and DiD are implemented in practice
+* What formulas like `y ~ 1 + [x ~ z]` mean
+* What Bayesian Structural Time Series (BSTS) does conceptually
+
+NO step-by-step code.
+Focus on **workflow and reasoning**, not syntax.
+
+---
+
+### 1️⃣2️⃣ Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating IV estimates as ATE
+* Ignoring weak instruments
+* Trusting DiD without checking trends
+* Using TWFE blindly under staggered adoption
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Design intuition first, equations second
+* No heavy proofs
+* No production code
+* Use examples wherever abstraction appears
+* Assume the reader knows Modules 0–3
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Applied causal inference textbooks and lecture notes
+* IV/LATE, RDD, and DiD foundational papers
+* Modern staggered adoption literature
+* Synthetic control methodology
+
+Do NOT fabricate citations.
+If a claim rests on assumptions, state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* Each design’s **identification logic** is unmistakable
+* Each assumption is explicitly named and interpreted
+* The reader understands **what each method can and cannot answer**
+* The transition to causal ML and policy evaluation is natural
+
+---
+
+
+
+
+
+
+
+Mmodule 5
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 5: Meta-Learners & Uplift Modeling – Heterogeneous Treatment Effects)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior causal machine learning researcher and applied data scientist** with expertise in:
+
+* Heterogeneous Treatment Effect (HTE) estimation
+* Meta-learners (S-, T-, X-learners)
+* Uplift modeling and targeted interventions
+* Marketplace personalization and policy optimization
+* Practical causal ML implementation (EconML, CausalML, PyLift)
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 5: Meta-Learners & Uplift Modeling**
+
+Your explanations must balance **causal rigor and machine-learning intuition**, suitable for exams, viva, and industry use.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 5**, explaining:
+
+* Why treatment effects vary across individuals
+* How meta-learners estimate Conditional Average Treatment Effects (CATE)
+* When and why different learners (S/T/X) are appropriate
+* How uplift modeling reframes personalization problems
+* How causal ML differs from predictive ML
+
+The output must prepare students for:
+
+* Advanced MS-level exams
+* Designing personalized policies (Pathao-style incentives)
+* Reading causal ML research papers
+* Correctly using EconML / CausalML APIs in practice
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why Heterogeneous Treatment Effects Matter
+
+Explain:
+
+* Why average effects (ATE) are insufficient for personalization
+* How treatment effects can vary across individuals and contexts
+
+Include:
+
+* One intuitive everyday example
+* One marketplace example (discounts, incentives, churn)
+
+Clarify:
+
+* The difference between risk prediction and effect prediction
+
+---
+
+### 2️⃣ From ATE to CATE
+
+Explain clearly:
+
+* What Conditional Average Treatment Effect (CATE) is
+* How conditioning on covariates changes the estimand
+
+Formally define:
+[
+\tau(x) = E[Y(1) - Y(0) \mid X = x]
+]
+
+Explain:
+
+* Why CATE is an estimand, not a model output
+* Why individual treatment effects remain unobservable
+
+---
+
+### 3️⃣ Meta-Learners: High-Level Idea
+
+Explain:
+
+* Why standard regression or ML cannot directly estimate treatment effects
+* The meta-learner strategy: reduce causal estimation to supervised learning subproblems
+
+Explain conceptually:
+
+* What is learned in each stage
+* Why this is called “meta”-learning
+
+---
+
+### 4️⃣ The T-Learner
+
+Explain:
+
+* How separate models are trained for treated and control groups
+* Why T-learners are simple and intuitive
+
+Clarify:
+
+* Strengths and weaknesses
+* Sensitivity to sample size imbalance
+
+Include:
+
+* One situation where T-learners perform poorly
+
+---
+
+### 5️⃣ The S-Learner
+
+Explain:
+
+* How treatment is included as a feature
+* Why this can lead to treatment effect shrinkage
+
+Clarify:
+
+* When S-learners are useful
+* Why they often underperform when treatment effects are small
+
+---
+
+### 6️⃣ The X-Learner (Core Focus)
+
+Explain:
+
+* Why X-learners were introduced
+* How imputation of counterfactuals works conceptually
+* Why X-learners handle unbalanced treatment groups better
+
+Explain intuitively:
+
+* The role of propensity scores
+* Why X-learners dominate in observational settings
+
+---
+
+### 7️⃣ Uplift Modeling vs CATE Modeling
+
+Explain:
+
+* What uplift modeling is
+* How it aligns with decision-making and policy targeting
+
+Clarify:
+
+* Persuadables vs always-takers vs never-takers
+* Why uplift ≠ prediction
+
+Include:
+
+* A Pathao-style incentive targeting example
+
+---
+
+### 8️⃣ Evaluation of HTE and Uplift Models
+
+Explain:
+
+* Why standard prediction metrics fail
+* Conceptual evaluation approaches (uplift curves, policy value)
+
+Clarify:
+
+* Why true individual effects are never observed
+* What “good performance” means in practice
+
+---
+
+### 9️⃣ From Theory to Practice (EconML View)
+
+Explain conceptually:
+
+* How EconML implements meta-learners
+* What inputs are required (outcomes, treatment, features)
+* Why cross-fitting and regularization matter
+
+NO step-by-step code.
+Focus on **workflow, assumptions, and interpretation**.
+
+---
+
+### 🔟 Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating CATE predictions as ground truth
+* Ignoring overlap/positivity violations
+* Using uplift models without causal framing
+* Confusing targeting accuracy with causal impact
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Causal logic first, ML second
+* No proofs
+* No production code
+* Examples wherever abstraction appears
+* Assume the reader knows Modules 0–4
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Meta-learner and HTE literature
+* Uplift modeling practitioner papers
+* EconML and CausalML conceptual documentation
+
+Do NOT fabricate citations.
+If something depends on assumptions (e.g., ignorability, overlap), state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* The distinction between prediction and treatment effect estimation is unmistakable
+* Each meta-learner’s role and limitation is clear
+* The Pathao personalization example motivates every modeling choice
+* The transition to Double Machine Learning (Module 6) is natural
+
+------------------------------------------------------------------------------------------
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 5: Meta-Learners & Uplift Modeling – Heterogeneous Treatment Effects)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior causal machine learning researcher and applied data scientist** with expertise in:
+
+* Heterogeneous Treatment Effect (HTE) estimation
+* Meta-learners (S-, T-, X-learners)
+* Uplift modeling and targeted interventions
+* Marketplace personalization and policy optimization
+* Practical causal ML implementation (EconML, CausalML, PyLift)
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 5: Meta-Learners & Uplift Modeling**
+
+Your explanations must balance **causal rigor and machine-learning intuition**, suitable for exams, viva, and industry use.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 5**, explaining:
+
+* Why treatment effects vary across individuals
+* How meta-learners estimate Conditional Average Treatment Effects (CATE)
+* When and why different learners (S/T/X) are appropriate
+* How uplift modeling reframes personalization problems
+* How causal ML differs from predictive ML
+
+The output must prepare students for:
+
+* Advanced MS-level exams
+* Designing personalized policies (Pathao-style incentives)
+* Reading causal ML research papers
+* Correctly using EconML / CausalML APIs in practice
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why Heterogeneous Treatment Effects Matter
+
+Explain:
+
+* Why average effects (ATE) are insufficient for personalization
+* How treatment effects can vary across individuals and contexts
+
+Include:
+
+* One intuitive everyday example
+* One marketplace example (discounts, incentives, churn)
+
+Clarify:
+
+* The difference between risk prediction and effect prediction
+
+---
+
+### 2️⃣ From ATE to CATE
+
+Explain clearly:
+
+* What Conditional Average Treatment Effect (CATE) is
+* How conditioning on covariates changes the estimand
+
+Formally define:
+[
+\tau(x) = E[Y(1) - Y(0) \mid X = x]
+]
+
+Explain:
+
+* Why CATE is an estimand, not a model output
+* Why individual treatment effects remain unobservable
+
+---
+
+### 3️⃣ Meta-Learners: High-Level Idea
+
+Explain:
+
+* Why standard regression or ML cannot directly estimate treatment effects
+* The meta-learner strategy: reduce causal estimation to supervised learning subproblems
+
+Explain conceptually:
+
+* What is learned in each stage
+* Why this is called “meta”-learning
+
+---
+
+### 4️⃣ The T-Learner
+
+Explain:
+
+* How separate models are trained for treated and control groups
+* Why T-learners are simple and intuitive
+
+Clarify:
+
+* Strengths and weaknesses
+* Sensitivity to sample size imbalance
+
+Include:
+
+* One situation where T-learners perform poorly
+
+---
+
+### 5️⃣ The S-Learner
+
+Explain:
+
+* How treatment is included as a feature
+* Why this can lead to treatment effect shrinkage
+
+Clarify:
+
+* When S-learners are useful
+* Why they often underperform when treatment effects are small
+
+---
+
+### 6️⃣ The X-Learner (Core Focus)
+
+Explain:
+
+* Why X-learners were introduced
+* How imputation of counterfactuals works conceptually
+* Why X-learners handle unbalanced treatment groups better
+
+Explain intuitively:
+
+* The role of propensity scores
+* Why X-learners dominate in observational settings
+
+---
+
+### 7️⃣ Uplift Modeling vs CATE Modeling
+
+Explain:
+
+* What uplift modeling is
+* How it aligns with decision-making and policy targeting
+
+Clarify:
+
+* Persuadables vs always-takers vs never-takers
+* Why uplift ≠ prediction
+
+Include:
+
+* A Pathao-style incentive targeting example
+
+---
+
+### 8️⃣ Evaluation of HTE and Uplift Models
+
+Explain:
+
+* Why standard prediction metrics fail
+* Conceptual evaluation approaches (uplift curves, policy value)
+
+Clarify:
+
+* Why true individual effects are never observed
+* What “good performance” means in practice
+
+---
+
+### 9️⃣ From Theory to Practice (EconML View)
+
+Explain conceptually:
+
+* How EconML implements meta-learners
+* What inputs are required (outcomes, treatment, features)
+* Why cross-fitting and regularization matter
+
+NO step-by-step code.
+Focus on **workflow, assumptions, and interpretation**.
+
+---
+
+### 🔟 Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating CATE predictions as ground truth
+* Ignoring overlap/positivity violations
+* Using uplift models without causal framing
+* Confusing targeting accuracy with causal impact
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Causal logic first, ML second
+* No proofs
+* No production code
+* Examples wherever abstraction appears
+* Assume the reader knows Modules 0–4
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Meta-learner and HTE literature
+* Uplift modeling practitioner papers
+* EconML and CausalML conceptual documentation
+
+Do NOT fabricate citations.
+If something depends on assumptions (e.g., ignorability, overlap), state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* The distinction between prediction and treatment effect estimation is unmistakable
+* Each meta-learner’s role and limitation is clear
+* The Pathao personalization example motivates every modeling choice
+* The transition to Double Machine Learning (Module 6) is natural
+--------------------------------------------------------------------------------------
+
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 6: Double Machine Learning – Orthogonalization & High-Dimensional Causal Inference)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior econometrician and causal machine learning researcher** with expertise in:
+
+* Double / Debiased Machine Learning (DML)
+* High-dimensional causal inference
+* Orthogonalization and Neyman-orthogonal scores
+* Semi-parametric estimation and valid inference
+* Marketplace analytics and price elasticity estimation
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 6: Double Machine Learning (DML)**
+
+Your task is to make DML **conceptually clear, mathematically grounded, and practically interpretable**, without unnecessary proofs.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 6**, explaining:
+
+* Why naïve ML creates bias in causal estimation
+* How orthogonalization removes first-order bias
+* How DML enables valid inference with high-dimensional confounders
+* How causal forests extend DML to heterogeneous effects
+
+The output must prepare students for:
+
+* MS-level exams and viva
+* Reading modern causal ML papers
+* Correct use of EconML’s DML estimators
+* Understanding why inference is still possible after ML
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ The High-Dimensional Confounding Problem
+
+Explain:
+
+* Why classical regression fails with many covariates
+* Why regularized ML improves prediction but harms causal inference
+
+Clarify:
+
+* Bias–variance tradeoff vs causal bias
+* Why “controlling for more variables” is not enough
+
+Include:
+
+* One intuitive marketplace example (pricing with many controls)
+
+---
+
+### 2️⃣ From Partialling-Out to Orthogonalization
+
+Explain:
+
+* The intuition behind partialling-out
+* How Frisch–Waugh–Lovell motivates residualization
+
+Explain conceptually:
+
+* What it means to “remove the effect of X”
+* Why this idea precedes DML historically
+
+---
+
+### 3️⃣ Residualized Outcome and Treatment
+
+Explain clearly:
+[
+\tilde{Y} = Y - E[Y \mid X]
+]
+[
+\tilde{T} = T - E[T \mid X]
+]
+
+Explain in words:
+
+* What information remains in each residual
+* Why the causal signal is preserved after residualization
+
+Clarify:
+
+* Why residualization alone is not sufficient
+
+---
+
+### 4️⃣ Neyman-Orthogonality (Core Idea)
+
+Explain:
+
+* What a moment condition is (intuitively)
+* What Neyman-orthogonality means
+
+Explain in plain language:
+
+* Why small ML errors do not contaminate the treatment effect
+* Why this property is crucial for valid inference
+
+NO formal proofs.
+Focus on **robustness logic**.
+
+---
+
+### 5️⃣ Double Machine Learning (DML) Algorithm
+
+Explain step-by-step (conceptually):
+
+* First-stage nuisance estimation
+* Cross-fitting
+* Second-stage causal estimation
+
+Clarify:
+
+* Why cross-fitting is essential
+* Why overfitting does not invalidate inference
+
+---
+
+### 6️⃣ Identification vs Estimation in DML
+
+Explain:
+
+* What assumptions DML still requires (ignorability, overlap)
+* What DML does NOT fix
+
+Clarify:
+
+* Why DML is not a substitute for design
+* Why identification still comes first
+
+---
+
+### 7️⃣ Inference After Machine Learning
+
+Explain:
+
+* Why standard ML does not support confidence intervals
+* How DML restores asymptotic normality
+
+Explain intuitively:
+
+* Why we can trust confidence intervals from DML
+* Why this is surprising but valid
+
+---
+
+### 8️⃣ Causal Forests and Heterogeneous Effects
+
+Explain:
+
+* Why average effects are insufficient
+* How CausalForestDML extends DML to CATE estimation
+
+Clarify:
+
+* Local moment equations intuition
+* Why forests estimate effects, not predictions
+
+Include:
+
+* One price elasticity example with heterogeneous response
+
+---
+
+### 9️⃣ Marketplace Application: Price Elasticity with Many Controls
+
+Explain in detail:
+
+* Why price is endogenous
+* Why many covariates are needed
+* Why DML is appropriate in this setting
+
+Explain:
+
+* What estimand is being recovered
+* How interpretation differs from standard regression
+
+---
+
+### 🔟 From Theory to Practice (EconML View)
+
+Explain conceptually:
+
+* How EconML implements DML and CausalForestDML
+* What inputs are required
+* Why tuning and cross-fitting matter
+
+NO step-by-step code.
+Focus on **workflow, assumptions, and interpretation**.
+
+---
+
+### 1️⃣1️⃣ Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating DML as “automatic causality”
+* Ignoring overlap violations
+* Misinterpreting CATE intervals
+* Assuming ML correctness implies causal correctness
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Intuition first, math second
+* No proofs
+* No production code
+* Use examples wherever abstraction appears
+* Assume the reader knows Modules 0–5
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Double/Debiased Machine Learning literature
+* EconML conceptual documentation
+* Causal forest and generalized random forest papers
+
+Do NOT fabricate citations.
+If something relies on assumptions, state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* Orthogonalization is intuitively clear
+* The role of cross-fitting is unmistakable
+* The distinction between prediction and causal estimation is reinforced
+* The transition to longitudinal methods and causal XAI is natural
+
+--------------------------------------------------------------------------
+
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 7: Longitudinal Causality & G-Methods – Time-Varying Confounding and Dynamic Treatments)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior epidemiologist and causal inference researcher** with deep expertise in:
+
+* Longitudinal causal inference
+* Time-varying confounding
+* Marginal Structural Models (MSMs)
+* Inverse Probability Weighting (IPW)
+* G-methods (g-formula, g-estimation)
+* Time-series causality in biomedical and sensor data
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 7: Longitudinal Causality & G-Methods**
+
+Your explanations must be **conceptually rigorous, assumption-explicit, and biologically/behaviorally interpretable**, without heavy proofs.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 7**, explaining:
+
+* Why standard causal methods fail with time-varying treatments
+* How time-varying confounders create bias when naively adjusted
+* How MSMs and IPW solve this problem
+* How longitudinal causal reasoning applies to CGM and other sensor data
+
+The output must prepare students for:
+
+* MS-level exams and viva
+* Reading applied epidemiology and longitudinal causal papers
+* Designing causal analyses with repeated measures
+* Understanding dynamic treatment regimes and feedback systems
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why Longitudinal Causal Inference Is Different
+
+Explain:
+
+* What longitudinal data is
+* Why repeated measurements introduce new causal challenges
+
+Clarify:
+
+* Static vs dynamic treatment effects
+* Why “adjusting for everything over time” fails
+
+Include:
+
+* One intuitive everyday example
+* One biomedical or behavioral example
+
+---
+
+### 2️⃣ Time-Varying Confounding (Core Problem)
+
+Explain clearly:
+
+* What a time-varying confounder is
+* How a variable can be both a confounder and a mediator
+
+Use the canonical logic:
+
+* Past treatment → confounder → future treatment → outcome
+
+Explain why:
+
+* Standard regression blocks causal pathways
+* Bias is introduced even with rich covariate adjustment
+
+---
+
+### 3️⃣ The CGM Case (Core Application)
+
+Explain in depth:
+
+* Why glucose is affected by prior insulin
+* Why insulin decisions depend on current glucose
+* Why glucose becomes a time-varying confounder
+
+Use the example:
+
+> A “cheat meal” followed by insulin correction
+
+Explain:
+
+* Why naive adjustment for glucose destroys the causal effect of diet
+* Why this problem cannot be solved by better prediction
+
+The explanation must be **accessible to non-clinicians**.
+
+---
+
+### 4️⃣ G-Methods Overview
+
+Explain:
+
+* Why G-methods were developed
+* The three main approaches:
+
+  * G-computation
+  * Inverse Probability Weighting (IPW)
+  * Marginal Structural Models (MSMs)
+
+Clarify:
+
+* What problem each method targets
+* Why they are design-based, not model-based tricks
+
+---
+
+### 5️⃣ Marginal Structural Models (MSMs)
+
+Explain:
+
+* What an MSM is
+* Why it models potential outcomes under treatment histories
+
+Clarify:
+
+* Why MSMs are “marginal”
+* How they differ from standard regression
+
+Use intuition first, equations second.
+
+---
+
+### 6️⃣ Inverse Probability Weighting (IPW)
+
+Explain:
+
+* What treatment weights represent
+* How weighting creates a pseudo-population
+
+Explain intuitively:
+
+* Why weights “break” confounding
+* Why extreme weights are dangerous
+
+Clarify:
+
+* Stabilized vs unstabilized weights
+* Practical overlap concerns
+
+---
+
+### 7️⃣ Identification Assumptions in Longitudinal Settings
+
+Explain explicitly:
+
+* Sequential ignorability
+* Positivity over time
+* Correct model specification for weights
+
+Clarify:
+
+* Why these assumptions are stronger than cross-sectional settings
+* Why they are fundamentally untestable
+
+---
+
+### 8️⃣ Interpretation of Longitudinal Causal Effects
+
+Explain:
+
+* What estimands MSMs recover
+* What “effect of a treatment regime” means
+
+Clarify:
+
+* Difference between single-time interventions and dynamic regimes
+* Why interpretation must follow the treatment history definition
+
+---
+
+### 9️⃣ Time-Series Causality vs Longitudinal Causal Inference
+
+Explain:
+
+* Difference between longitudinal causal inference and time-series causal discovery
+* What questions Tigramite/PCMCI answer
+* What questions they do **not** answer
+
+Clarify:
+
+* Association discovery vs causal identification
+* When each approach is appropriate
+
+---
+
+### 🔟 From Theory to Practice (Tigramite View)
+
+Explain conceptually:
+
+* What Tigramite does
+* What conditional independence in time-series means
+* Why temporal ordering is crucial
+
+NO step-by-step code.
+Focus on **reasoning, assumptions, and interpretation**.
+
+---
+
+### 1️⃣1️⃣ Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating time-varying confounders as ordinary controls
+* Using standard regression for longitudinal treatments
+* Confusing Granger causality with causal effects
+* Ignoring positivity violations over time
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Intuition first, mathematics second
+* No heavy proofs
+* No production code
+* Use examples whenever abstraction appears
+* Assume the reader knows Modules 0–6
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Longitudinal causal inference textbooks
+* MSM and IPW foundational papers
+* G-formula conceptual literature
+* Tigramite and PCMCI method papers
+
+Do NOT fabricate citations.
+If a claim depends on assumptions, state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* Time-varying confounding is unmistakably clear
+* The CGM example clearly motivates G-methods
+* MSM and IPW logic is intuitive, not memorized
+* The transition to causal discovery and Causal XAI is natural
+
+-----------------------------------------------------------------------
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 8: Causal Discovery & Structure Learning – PC, FCI, LiNGAM, Time-Series Discovery)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior causal discovery researcher and statistical learning expert** with deep experience in:
+
+* Causal structure learning from observational data
+* Constraint-based algorithms (PC, FCI)
+* Functional causal models (LiNGAM)
+* Latent confounding and partial ancestral graphs (PAGs)
+* Time-series causal discovery (PCMCI, sensor data)
+* Applying causal discovery in biology and complex systems
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 8: Causal Discovery (Structure Learning)**
+
+Your explanations must be **theoretically precise, assumption-explicit, and strongly cautionary** about misuse.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 8**, explaining:
+
+* What causal discovery can and cannot do
+* How DAGs can (sometimes) be learned from observational data
+* Why causal discovery is primarily a **hypothesis-generation tool**
+* How structure learning applies to CGM and sensor streams
+
+The output must prepare students for:
+
+* MS-level exams and viva
+* Reading causal discovery and structure learning papers
+* Correct interpretation of PC/FCI/LiNGAM outputs
+* Avoiding false causal claims in biological data
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ What Is Causal Discovery?
+
+Explain:
+
+* What causal discovery means
+* How it differs from causal inference with a known DAG
+
+Clarify:
+
+* Structure learning vs effect estimation
+* Why discovering a DAG is harder than estimating an effect
+
+Include:
+
+* One intuitive non-technical example
+
+---
+
+### 2️⃣ Why Causal Discovery Is Dangerous If Misused
+
+Explain:
+
+* Why observational data alone cannot identify all causal directions
+* Why multiple DAGs can fit the same data (Markov equivalence)
+
+Explicitly state:
+
+* What causal discovery **cannot prove**
+* Why it should not be used for policy decisions without validation
+
+---
+
+### 3️⃣ Conditional Independence & Graphical Logic
+
+Explain clearly:
+
+* Conditional independence tests
+* How independencies imply graph constraints
+
+Explain intuitively:
+
+* d-separation
+* Why tests, not correlations, drive structure learning
+
+NO heavy mathematics.
+
+---
+
+### 4️⃣ The PC Algorithm
+
+Explain:
+
+* The logic of the PC algorithm step by step (conceptually)
+* Skeleton discovery
+* Edge orientation rules
+
+Clarify:
+
+* Key assumptions (causal sufficiency, faithfulness)
+* What the output represents
+
+Explain:
+
+* What a CPDAG is and why directions may be ambiguous
+
+---
+
+### 5️⃣ Latent Confounding & the FCI Algorithm
+
+Explain:
+
+* Why hidden variables break PC
+* How FCI extends PC
+
+Clarify:
+
+* What Partial Ancestral Graphs (PAGs) are
+* How to interpret circle and arrow endpoints
+
+Explain:
+
+* Why FCI outputs uncertainty by design
+
+---
+
+### 6️⃣ Functional Causal Models & LiNGAM
+
+Explain:
+
+* The idea of functional causal models
+* Why non-Gaussianity enables identifiability
+
+Explain intuitively:
+
+* How LiNGAM recovers directionality
+* Why its assumptions are strong but powerful
+
+Clarify:
+
+* When LiNGAM fails
+* Why linearity and non-Gaussianity matter
+
+---
+
+### 7️⃣ Comparison of PC, FCI, and LiNGAM
+
+Explain:
+
+* What assumptions each method relies on
+* What kind of output each produces
+
+Clarify:
+
+* When each algorithm is appropriate
+* Trade-offs between realism and identifiability
+
+This section must be **comparison-focused**, not algorithmic.
+
+---
+
+### 8️⃣ Time-Series Causal Discovery & Sensor Data
+
+Explain:
+
+* Why time ordering helps causal discovery
+* What PCMCI adds beyond static discovery
+
+Clarify:
+
+* Lagged vs contemporaneous effects
+* Why time-series discovery is still assumption-heavy
+
+---
+
+### 9️⃣ CGM Application: Hypothesis Generation, Not Proof
+
+Explain in depth:
+
+* How causal discovery could suggest new physiological triggers
+* Why discovered edges are hypotheses, not confirmed mechanisms
+
+Explain:
+
+* How discovered structures should be validated
+* How discovery feeds into later causal inference modules
+
+---
+
+### 🔟 Identification vs Discovery
+
+Explain explicitly:
+
+* Why discovering a DAG ≠ identifying causal effects
+* Why effect estimation requires additional assumptions or experiments
+
+This section must clearly separate:
+
+* Structure learning
+* Causal estimation
+
+---
+
+### 1️⃣1️⃣ From Theory to Practice (Tigramite / Discovery Tools View)
+
+Explain conceptually:
+
+* What tools like Tigramite implement
+* What conditional independence tests mean in practice
+* Why parameter tuning and domain knowledge matter
+
+NO step-by-step code.
+Focus on **interpretation, assumptions, and limits**.
+
+---
+
+### 1️⃣2️⃣ Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating discovered DAGs as ground truth
+* Ignoring faithfulness violations
+* Over-interpreting edge directions
+* Confusing Granger causality with causal mechanisms
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Logic and assumptions first, algorithms second
+* No heavy proofs
+* No production code
+* Use warnings wherever misuse is common
+* Assume the reader knows Modules 0–7
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Causal discovery textbooks and monographs
+* PC, FCI, and LiNGAM foundational papers
+* Time-series causal discovery literature (PCMCI)
+
+Do NOT fabricate citations.
+If a result depends on assumptions, state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* The limits of causal discovery are unmistakable
+* The distinction between discovery and inference is clear
+* The CGM example reinforces hypothesis-generation logic
+* The transition to Causal XAI (Module 9) is natural
+
+----------------------------------------------------------------------
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 9: Causal Explainable AI – From Correlational XAI to Causal Explanations)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior researcher in causal machine learning and explainable AI** with expertise in:
+
+* Explainable AI (XAI) and interpretability methods
+* Causal inference and structural causal models
+* Causal Shapley values and attribution under confounding
+* Counterfactual explanations and algorithmic recourse
+* High-stakes decision systems in healthcare and platforms
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 9: Causal Explainable AI (C-XAI)**
+
+Your explanations must be **conceptually sharp, causally correct, and strongly critical of naïve XAI use**.
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 9**, explaining:
+
+* Why popular XAI methods explain correlations, not causes
+* How confounding breaks standard feature attribution
+* How causal structure changes the meaning of “importance”
+* How counterfactual explanations operationalize causal reasoning
+
+The output must prepare students for:
+
+* MS-level exams and viva
+* Reading modern C-XAI research papers
+* Designing explanations that support decision-making
+* Avoiding misleading explanations in healthcare and platforms
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why Explainability Is Not Causality
+
+Explain:
+
+* What most XAI methods actually explain (model behavior, not the world)
+* Why explanation ≠ justification ≠ intervention guidance
+
+Clarify:
+
+* Prediction-focused explanations vs decision-focused explanations
+
+Include:
+
+* One intuitive everyday example
+* One ML model example
+
+---
+
+### 2️⃣ Why SHAP and LIME Fail Under Confounding
+
+Explain clearly:
+
+* How SHAP and LIME rely on statistical associations
+* Why correlated features distort attributions
+
+Explain intuitively:
+
+* Why “importance” does not mean “causal influence”
+* Why conditioning on the wrong variables creates bias
+
+Include:
+
+* A simple DAG-based explanation
+
+---
+
+### 3️⃣ Correlation vs Causation in XAI
+
+Explain:
+
+* Why post-hoc explanations inherit model bias
+* Why explaining a biased model does not fix bias
+
+Clarify:
+
+* Why accurate prediction can coexist with wrong explanations
+* Why explanations can be confidently wrong
+
+---
+
+### 4️⃣ Structural Causal Models as the Missing Layer
+
+Explain:
+
+* Why causal explanations require a causal graph
+* How SCMs define valid interventions and counterfactuals
+
+Clarify:
+
+* The difference between observing, conditioning, and intervening
+* Why causal constraints rule out “impossible” explanations
+
+---
+
+### 5️⃣ Causal Shapley Values (Core Concept)
+
+Explain:
+
+* How Shapley values work at a high level
+* Why causal Shapley values modify the game
+
+Explain intuitively:
+
+* How attribution is routed through a DAG
+* Why causal Shapley values respect causal order and dependence
+
+NO heavy game-theoretic math.
+Focus on **conceptual correctness**.
+
+---
+
+### 6️⃣ Comparing Standard SHAP vs Causal SHAP
+
+Explain:
+
+* What changes when causal structure is imposed
+* Why causal SHAP produces fewer but more meaningful attributions
+
+Clarify:
+
+* When causal SHAP disagrees with SHAP
+* Why disagreement is a feature, not a bug
+
+---
+
+### 7️⃣ Counterfactual Explanations (Actionable XAI)
+
+Explain:
+
+* What a counterfactual explanation is
+* Why counterfactuals answer “what should I change?”
+
+Clarify:
+
+* Difference between nearest counterfactuals and causal counterfactuals
+* Why feasibility and plausibility matter
+
+---
+
+### 8️⃣ Application: “Why Did My Sugar Spike?”
+
+Explain in depth:
+
+* Why feature weights are insufficient in CGM data
+* How causal explanations reframe the question
+
+Use the framing:
+
+> “If I had walked after the meal, would my glucose still have spiked?”
+
+Explain:
+
+* Why this is a causal question
+* How counterfactual explanations answer it
+
+---
+
+### 9️⃣ From Attribution to Decision Support
+
+Explain:
+
+* Why C-XAI is about **guidance**, not transparency
+* How explanations link to interventions and policies
+
+Clarify:
+
+* Why explanations must be evaluated by downstream decisions
+
+---
+
+### 🔟 From Theory to Practice (DiCE & CausalSHAP View)
+
+Explain conceptually:
+
+* What DiCE generates and under what assumptions
+* How diversity and feasibility are enforced
+* What CausalSHAP implements conceptually
+
+NO step-by-step code.
+Focus on **assumptions, interpretation, and limits**.
+
+---
+
+### 1️⃣1️⃣ Identification Assumptions Behind C-XAI
+
+Explain explicitly:
+
+* Why C-XAI inherits causal assumptions
+* Why wrong DAGs produce wrong explanations
+
+Clarify:
+
+* Why C-XAI is not assumption-free
+* Why domain knowledge is mandatory
+
+---
+
+### 1️⃣2️⃣ Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating SHAP values as causal effects
+* Using counterfactuals without feasibility constraints
+* Ignoring confounding in explanation pipelines
+* Equating interpretability with trustworthiness
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Causal logic first, explainability second
+* No heavy proofs
+* No production code
+* Use DAG-based intuition whenever possible
+* Assume the reader knows Modules 0–8
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* XAI foundational papers (LIME, SHAP)
+* Causal Shapley and causal attribution literature
+* Counterfactual explanation research
+* Causal inference and SCM foundations
+
+Do NOT fabricate citations.
+If a result depends on assumptions, state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* The failure of correlational XAI is unmistakable
+* The role of causal structure in explanation is clear
+* The CGM example motivates every concept
+* The transition to robustness and refutation (Module 10) is natural
+
+---------------------------------------------------------------------------
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 10: Robustness & Refutation – Stress-Testing Causal Claims and External Validity)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior causal inference researcher and methodological auditor** with expertise in:
+
+* Causal robustness and falsification strategies
+* Refutation tests and negative controls
+* Sensitivity analysis for unobserved confounding
+* Rosenbaum bounds and hidden bias assessment
+* Transportability and external validity
+* Auditing causal claims in policy, healthcare, and marketplaces
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 10: Robustness & Refutation**
+
+Your mindset must be that of a **skeptical reviewer** asking:
+
+> *“If this result is wrong, how would I find out?”*
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 10**, explaining:
+
+* Why causal estimation is never the final step
+* How to stress-test causal claims systematically
+* How refutation differs from validation and prediction accuracy
+* How to reason about external validity and transportability
+
+The output must prepare students for:
+
+* MS-level exams and viva
+* Reading and reviewing causal inference papers
+* Defending causal claims in academic and industry settings
+* Knowing when **not** to trust a result
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why Causal Results Must Be Attacked, Not Trusted
+
+Explain:
+
+* Why causal estimates are fragile
+* Why statistical significance is insufficient
+
+Clarify:
+
+* The difference between estimation error and identification error
+* Why robustness checks are about *credibility*, not accuracy
+
+Include:
+
+* One intuitive everyday analogy
+* One applied research example
+
+---
+
+### 2️⃣ Refutation vs Validation
+
+Explain clearly:
+
+* What refutation means in causal inference
+* Why refutation is asymmetric (you can falsify, not prove)
+
+Clarify:
+
+* Why passing refutation tests does not prove truth
+* Why failing refutation tests is decisive
+
+---
+
+### 3️⃣ Placebo Treatments and Outcomes
+
+Explain:
+
+* What a placebo test is in causal inference
+* Why assigning fake treatments or outcomes should yield null effects
+
+Clarify:
+
+* What it means if a placebo effect is detected
+* Common pitfalls in placebo design
+
+---
+
+### 4️⃣ Random Common Cause & Negative Controls
+
+Explain:
+
+* The logic of adding random confounders
+* Why true causal effects should be robust to irrelevant variables
+
+Explain intuitively:
+
+* How negative controls detect hidden bias
+* Why they are powerful diagnostics
+
+---
+
+### 5️⃣ Sensitivity Analysis & Unobserved Confounding
+
+Explain:
+
+* Why ignorability is untestable
+* Why sensitivity analysis asks “how strong would bias need to be?”
+
+Explain intuitively:
+
+* What sensitivity parameters represent
+* Why simulation-based approaches are useful
+
+---
+
+### 6️⃣ Rosenbaum Bounds (Classic Sensitivity Logic)
+
+Explain:
+
+* The idea of hidden bias in observational studies
+* What Rosenbaum bounds quantify
+
+Clarify:
+
+* How to interpret Γ (gamma)
+* Why these bounds are conservative by design
+
+NO formal derivations.
+Focus on **interpretation and decision-making**.
+
+---
+
+### 7️⃣ Robustness as a Causal Stress Test
+
+Explain:
+
+* How multiple refutations work together
+* Why robustness is about *patterns*, not single checks
+
+Clarify:
+
+* Why robustness strengthens credibility but never guarantees truth
+
+---
+
+### 8️⃣ External Validity & Transportability
+
+Explain:
+
+* Why causal effects are context-dependent
+* Why effects do not automatically generalize
+
+Introduce:
+
+* Transportability as a formal framework
+* Selection diagrams (conceptually, no diagrams needed)
+
+---
+
+### 9️⃣ Pathao Case: Transporting Effects Across Cities
+
+Explain in depth:
+
+* Why a Dhaka result may not hold in Chittagong
+* Differences in demand, supply, congestion, and behavior
+
+Explain:
+
+* What assumptions are required to transport effects
+* When re-estimation is safer than transport
+
+---
+
+### 🔟 From Theory to Practice (DoWhy Refutation Workflow)
+
+Explain conceptually:
+
+* How DoWhy organizes refutation methods
+* What refute_estimate() actually tests
+* Why refutation is model-agnostic
+
+NO step-by-step code.
+Focus on **workflow, logic, and interpretation**.
+
+---
+
+### 1️⃣1️⃣ Identification vs Robustness
+
+Explain explicitly:
+
+* Why robustness cannot fix bad identification
+* Why a robust estimate can still be wrong
+
+Clarify:
+
+* The hierarchy: Identification → Estimation → Refutation
+
+---
+
+### 1️⃣2️⃣ Common Failure Modes & Exam Traps
+
+Explicitly warn about:
+
+* Treating robustness checks as optional
+* Over-interpreting “passed all refutations”
+* Ignoring external validity
+* Confusing robustness with generalizability
+
+Include:
+
+* One concise paragraph suitable for **direct exam answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Skeptical, reviewer-style reasoning
+* Intuition first, formalism second
+* No heavy proofs
+* No production code
+* Assume the reader knows Modules 0–9
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* DoWhy refutation framework
+* Sensitivity analysis literature (Rosenbaum)
+* Transportability and external validity research
+
+Do NOT fabricate citations.
+If a claim depends on assumptions, state that explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* The mindset of skepticism is unmistakable
+* Refutation is clearly distinguished from validation
+* External validity is treated as a first-class problem
+* The course ends with intellectual honesty, not false certainty
+---------------------------------------------------------------------------
+## 🔍 DEEP RESEARCH MASTER PROMPT
+
+**(Module 11: The Professional Python Stack – End-to-End Causal Inference in Practice)**
+
+---
+
+### ROLE & AUTHORITY
+
+You are a **senior causal inference engineer and applied research scientist** with extensive experience in:
+
+* Building end-to-end causal inference pipelines in Python
+* Translating causal theory into production-grade workflows
+* Auditing causal analyses in academia and industry
+* Using modern causal libraries responsibly (not as black boxes)
+
+You are writing **full study material** for a **Master’s-level course in Causal Inference**, specifically:
+
+> **Module 11: The Professional Python Stack**
+
+Your role is to explain **how all previous modules are operationalized in practice**, without reducing causal inference to “just running a package.”
+
+---
+
+### OBJECTIVE
+
+Produce **complete, self-contained study content** for **Module 11**, explaining:
+
+* Why causal inference requires orchestration, not isolated tools
+* How different Python libraries map to different causal tasks
+* How a full causal workflow is structured from question → answer
+* How misuse of libraries leads to invalid causal claims
+
+The output must prepare students for:
+
+* MS-level exams and viva
+* Designing reproducible causal pipelines
+* Explaining tool choices in interviews (e.g., Pathao, research labs)
+* Knowing **which tool to use, when, and why**
+
+---
+
+### REQUIRED CONTENT (DO NOT SKIP ANY SECTION)
+
+You MUST cover **all sections below**, in this exact order.
+
+---
+
+### 1️⃣ Why a “Causal Stack” Is Not a Modeling Stack
+
+Explain:
+
+* Why causal inference is not just model fitting
+* Why libraries play different roles (design, estimation, refutation)
+
+Clarify:
+
+* Difference between orchestration, estimation, and explanation
+* Why no single library can “do causality end-to-end” correctly
+
+---
+
+### 2️⃣ Orchestration Layer: DoWhy
+
+Explain:
+
+* What orchestration means in causal inference
+* Why DoWhy is not an estimator but a **causal workflow manager**
+
+Explain conceptually:
+
+* How DoWhy enforces the steps:
+  identification → estimation → refutation
+* Why this structure prevents common causal mistakes
+
+Clarify:
+
+* What DoWhy assumes
+* What it deliberately does **not** automate
+
+---
+
+### 3️⃣ Estimation Layer: EconML, CausalML, PyLift
+
+Explain:
+
+* Why estimation is modular and interchangeable
+* The difference between:
+
+  * Effect estimation
+  * Heterogeneous effect estimation
+  * Policy/uplift estimation
+
+Explain clearly:
+
+* When to use EconML
+* When to use CausalML
+* When uplift-specific tools like PyLift are appropriate
+
+Emphasize:
+
+* These libraries assume identification is already solved
+
+---
+
+### 4️⃣ Time-Series Layer: Tigramite & CausalImpact
+
+Explain:
+
+* Why time-ordered data requires specialized tools
+* Difference between:
+
+  * Causal discovery in time series (Tigramite)
+  * Intervention impact analysis over time (CausalImpact)
+
+Clarify:
+
+* What questions Tigramite answers
+* What questions CausalImpact answers
+* Why neither replaces longitudinal causal inference (MSMs)
+
+---
+
+### 5️⃣ XAI Layer: DiCE & Shapley-Based Tools
+
+Explain:
+
+* Why explanation comes **after** causal estimation
+* Difference between:
+
+  * Feature attribution
+  * Counterfactual explanation
+  * Causal explanation
+
+Clarify:
+
+* What DiCE generates conceptually
+* Why Shapley-based explanations must be used cautiously
+
+Explain:
+
+* How C-XAI depends on a correct causal model upstream
+
+---
+
+### 6️⃣ Quasi-Experimental Layer: Statsmodels & Linearmodels
+
+Explain:
+
+* Why classic econometric tools remain essential
+* What these libraries are designed for:
+
+  * IV
+  * RDD
+  * DiD
+  * Fixed effects models
+
+Clarify:
+
+* Why ML libraries cannot replace these tools
+* Why inference and standard errors matter here more than prediction
+
+---
+
+### 7️⃣ Mapping Tools to Causal Questions
+
+Explicitly explain:
+
+* Which type of causal question maps to which tool
+
+For example:
+
+* “What is the ATE?”
+* “Who benefits most?”
+* “Did this policy change matter over time?”
+* “Why did this outcome occur?”
+
+This section must reinforce **tool–question alignment**.
+
+---
+
+### 8️⃣ A Canonical End-to-End Causal Workflow
+
+Describe conceptually (no code):
+
+1. Problem formulation
+2. DAG and assumptions
+3. Identification strategy
+4. Estimation choice
+5. Robustness and refutation
+6. Explanation and decision support
+
+Explain:
+
+* Where each Python library fits
+* What happens if steps are skipped
+
+---
+
+### 9️⃣ Common Anti-Patterns in Practice
+
+Explicitly warn about:
+
+* Starting with EconML before identification
+* Running SHAP before causal modeling
+* Using CausalImpact as proof of causality
+* Treating libraries as “causal oracles”
+
+Explain why each anti-pattern is dangerous.
+
+---
+
+### 🔟 Professional Standards & Reproducibility
+
+Explain:
+
+* Why causal analysis must be reproducible
+* Why explicit assumptions must be documented
+* Why reviewers care more about design than code
+
+Clarify:
+
+* What “professional-grade” causal work looks like
+
+---
+
+### 1️⃣1️⃣ Interview & Exam Framing
+
+Explain:
+
+* How to talk about tools without sounding tool-driven
+* How to justify tool choice causally, not technically
+
+Include:
+
+* One short paragraph suitable for **direct viva or interview answers**
+
+---
+
+### REQUIRED STYLE & DEPTH RULES
+
+* Clear academic English
+* Workflow and reasoning first, libraries second
+* No step-by-step code
+* No marketing language for tools
+* Emphasize limitations and assumptions
+* Assume the reader knows Modules 0–10
+
+---
+
+### SOURCE GUIDANCE (DO NOT HALLUCINATE)
+
+Base structure and intuition on:
+
+* Official documentation of listed libraries
+* Causal inference best practices
+* Industry and academic causal workflows
+
+Do NOT fabricate citations.
+If a tool has limitations, state them explicitly.
+
+---
+
+### OUTPUT FORMAT
+
+* Structured lecture-note style
+* Clear section headings
+* Long-form explanations
+* Exam- and viva-ready language
+* No bullet-only summaries
+
+---
+
+### FINAL CHECK (MANDATORY)
+
+Before completing, verify that:
+
+* The causal workflow is crystal clear
+* Tools are framed as **servants of design**, not replacements
+* Misuse risks are explicitly stated
+* This module cleanly closes the entire course with practical clarity
+
+
+
+
+
+
+
+
